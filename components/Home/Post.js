@@ -22,6 +22,7 @@ const PostHeader = ({ post }) => (
     margin: 5,
     alignItems: 'center',
   }}>
+    {/* profile image */}
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <Image source={require('../../assets/circle11.png')} style={styles.border} />
       <Image source={typeof post.profie_img ==='string' ? { uri: post.profie_img }: post.profie_img} style={styles.storyImage} />
@@ -36,6 +37,7 @@ const PostHeader = ({ post }) => (
     <Text style={{ fontWeight: "900" }} >...</Text>
   </View>
 )
+// post image
 const PostImage = ({ post }) => (
   <View style={{ width: '100%', height: 450, marginTop: 4 }}>
     <Image
@@ -48,6 +50,7 @@ const PostImage = ({ post }) => (
     />
   </View>
 )
+// post footer
 const PostFooter = ({ post, onCommentPress }) => (
   <View style={{ paddingHorizontal: 10 }}>
     <Footerbuttons post={post} onCommentPress={onCommentPress} />
@@ -55,6 +58,7 @@ const PostFooter = ({ post, onCommentPress }) => (
   </View>
 );
 
+// footer buttons
 const Footerbuttons = ({ post, onCommentPress }) => {
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);

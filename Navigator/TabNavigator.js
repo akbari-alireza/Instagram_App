@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screen/HomeScreen';
 import ProfileScreen from '../screen/ProfileScreen';
 import LoginScreen from '../screen/LoginScreen';
+import SearchScreen from '../screen/SearchScreen';
+import ReelsScreen from '../screen/ReelsScreen';
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
   return (
@@ -36,9 +38,10 @@ const TabNavigator = () => {
         ),
       }} />
 
-      <Tab.Screen name="Search" component={HomeScreen} options={{
-        tabBarIcon: ({ size }) => (
-          <Image style={{ width: size, height: size }} source={require('../assets/instagram-search-icon.png')} />
+      <Tab.Screen name="Search" component={SearchScreen} options={{
+        tabBarIcon: ({focused, size }) => (
+          <Image style={{ width: size, height: size, tintColor: focused ? 'dodgerblue' : 'black' }} 
+           source={require('../assets/instagram-search-icon.png')} />
         ),
       }} />
       <Tab.Screen name="Add" component={LoginScreen} options={{
@@ -47,9 +50,11 @@ const TabNavigator = () => {
         ),
       }} />
 
-      <Tab.Screen name="Reals" component={HomeScreen} options={{
-        tabBarIcon: ({ size }) => (
-          <Image style={{ width: size, height: size }} source={require('../assets/instagram-reels-icon (1).png')} />
+      <Tab.Screen name="Reals" component={ReelsScreen} options={{
+        tabBarIcon: ({ focused ,size }) => (
+          <Image style={{ width: size, height: size, tintColor: focused ? 'dodgerblue' : 'black' }} source={ !focused ? require('../assets/instagram-reels-icon (1).png'): 
+            require('../assets/reels-fill.png') 
+          } />
         ),
       }} />
 

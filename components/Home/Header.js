@@ -6,7 +6,7 @@ export default function Header() {
         <View>
             <View style={styles.container}>
             <TouchableOpacity>
-                <Image style={styles.logo} source={require('../../assets/logo.jpg')} />
+                <Image style={styles.logo} source={require('../../assets/logo.png')} />
             </TouchableOpacity>
             <View style={styles.iconContainer}>
                 <TouchableOpacity>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 120,
-        height: 50,
+        height: 120,
         resizeMode: 'contain',
     },
     iconContainer: {
