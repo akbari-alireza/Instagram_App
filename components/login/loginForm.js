@@ -1,0 +1,89 @@
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+const LoginForm = () => {
+    const navigation = useNavigation();
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().required("Email is required"),
+            password: Yup.string().required("Password is required"),
+        }),
+        onSubmit: (values) => {
+            navigation.replace("Application");
+        },
+    })
+    return (
+        <View style={styles.wrapper}>
+            <View style={styles.inputField}>
+                <TextInput
+                    placeholder="Phone number, username or email"
+                    placeholderTextColor='#444'
+                    textContentType="emailAddress"
+                    autoFocus={true}
+                    autoCapitalize="none"
+                    value={formik.values.email}
+                    onChangeText={formik.handleChange("email")}
+                    onBlur={formik.handleBlur("email")}
+                />
+            </View>
+
+            {formik.touched.email && formik.errors.email && (
+                <Text style={{ fontSize: 10, color: "red" }}>{formik.errors.email}</Text>
+            )}
+
+            <View style={styles.inputField}>
+                <TextInput
+                    placeholder="Password"
+                    placeholderTextColor='#444'
+                    textContentType="password"
+                    secureTextEntry={true}
+                    autoCorrect={false}
+                    value={formik.values.password}
+                    onChangeText={formik.handleChange("password")}
+                    onBlur={formik.handleBlur("password")}
+                />
+
+            </View>
+            {formik.touched.email && formik.errors.email && (
+                <Text style={{ fontSize: 10, color: "red" }}>{formik.errors.password}</Text>
+            )}
+            <Pressable style={styles.button} onPress={formik.handleSubmit}>
+                <Text style={styles.buttonText}>Log in</Text>
+            </Pressable>
+        </View>
+    );
+}
+export default LoginForm;
+const styles = StyleSheet.create({
+    wrapper: {
+        width: "100%",
+        padding: 20,
+        paddingTop: 40,
+    },
+    inputField: {
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 5,
+    },
+    button: {
+        backgroundColor: "#0095f6",
+        borderRadius: 5,
+        padding: 7,
+        marginTop: 10,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    buttonText: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 20,
+    },
+})
