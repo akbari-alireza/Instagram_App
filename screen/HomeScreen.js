@@ -100,7 +100,12 @@ const ViewComments = ({ post, onClose }) => {
 
         {post.comments.map((comment, index) => (
           <View key={index} style={styles.commentRow}>
+            {/* userIfo */}
             <View style={styles.userInfo}>
+              <Image
+                source={require('../assets/circle11.png')}
+                style={styles.border}
+              />
               <Image
                 source={{ uri: comment.imageProfile }}
                 style={styles.profileImage}
@@ -137,6 +142,7 @@ const ViewComments = ({ post, onClose }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  
   commentSheet: {
     position: 'absolute',
     width: '100%',
@@ -167,18 +173,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     marginVertical: 10,
+    paddingHorizontal: 5,
   },
   userInfo: {
     flexDirection: 'row',
     gap: 10,
     flex: 1,
+    
   },
   profileImage: {
     width: 45,
     height: 45,
     borderRadius: 22.5,
-    borderColor: 'tomato',
-    borderWidth: 2,
+  },
+  border: {
+    width: 62,
+    height: 62,
+    position: 'absolute',
+    top: -9,
+    left: -8,
   },
   username: {
     fontWeight: 'bold',

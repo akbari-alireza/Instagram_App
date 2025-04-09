@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View,Image } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useFormik } from "formik";
@@ -56,6 +56,19 @@ const LoginForm = () => {
             <Pressable style={styles.button} onPress={formik.handleSubmit}>
                 <Text style={styles.buttonText}>Log in</Text>
             </Pressable>
+            <Pressable style={styles.forgot} >
+                <Text style={styles.forgotPasswor}>Forgot password ?</Text>
+            </Pressable>
+            <Pressable style={styles.create} onPress={() => navigation.navigate("SignUp")}>
+                <Text style={styles.creatAccount}>Don't have an account ?</Text>
+            </Pressable>
+            <View>
+                <Image
+                    style={styles.logo}
+                    source={require("../../assets/meta.png")}
+                    
+                />
+            </View>
         </View>
     );
 }
@@ -63,20 +76,21 @@ export default LoginForm;
 const styles = StyleSheet.create({
     wrapper: {
         width: "100%",
-        padding: 20,
+        padding: 10,
         paddingTop: 40,
     },
     inputField: {
         borderWidth: 1,
         borderColor: "#ccc",
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 5,
+        borderRadius: 15,
+        padding: 13,
+        paddingVertical: 15,
+        marginBottom: 15,
     },
     button: {
-        backgroundColor: "#0095f6",
-        borderRadius: 5,
-        padding: 7,
+        backgroundColor: "#067fff",
+        borderRadius: 50,
+        padding: 10,
         marginTop: 10,
         alignItems: "center",
         justifyContent: "center",
@@ -85,5 +99,33 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontWeight: "bold",
         fontSize: 20,
+    },
+    forgot: {
+        marginTop: 20,
+        alignSelf: "center",
+    },
+    forgotPasswor: {
+        fontWeight: '600'
+    },
+    create: {
+        marginTop: 190,
+        alignSelf: "center",
+        borderWidth: 1,
+        borderColor: "#067fff",
+        borderRadius: 50,
+        padding: 10,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    creatAccount: {
+        fontWeight: '600',
+        color: "#067fff",
+    },
+    logo: {
+        width: 75,
+        height: 75,
+        alignSelf: "center",
+        marginTop: 5,
     },
 })

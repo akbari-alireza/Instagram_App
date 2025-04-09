@@ -3,6 +3,7 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screen/HomeScreen';
 import ProfileScreen from '../screen/ProfileScreen';
+import LoginScreen from '../screen/LoginScreen';
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
   return (
@@ -27,12 +28,11 @@ const TabNavigator = () => {
             style={{ width: size, height:focused ? size+5: size, tintColor: focused ? 'dodgerblue' : 'black' }} // رنگ آیکون
             source={
               focused
-                ? require('../assets/fill-home-1.png')   // وقتی انتخاب شده
-                : require('../assets/instagram-home-feed-icon.png') // وقتی انتخاب نشده
+                ? require('../assets/fill-home-1.png') 
+                : require('../assets/instagram-home-feed-icon.png')
             }
           />
-          // <Image style={{ width: size, height: size }} source={require('../assets/instagram-home-feed-icon.png')} />
-          // <Image style={{ width: size, height: size+5, }} source={require('../assets/fill-home-1.png')} />
+          
         ),
       }} />
 
@@ -41,7 +41,7 @@ const TabNavigator = () => {
           <Image style={{ width: size, height: size }} source={require('../assets/instagram-search-icon.png')} />
         ),
       }} />
-      <Tab.Screen name="Add" component={HomeScreen} options={{
+      <Tab.Screen name="Add" component={LoginScreen} options={{
         tabBarIcon: ({ size }) => (
           <Image style={{ width: size, height: size }} source={require('../assets/instagram-add-new-post-icon.png')} />
         ),

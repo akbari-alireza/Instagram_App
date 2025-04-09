@@ -55,7 +55,7 @@ const ProfileHeader = () => {
                 {/* profile info */}
                 <View style={{ marginLeft: 25, }}>
                     <View style={{ flexDirection: 'row', gap: 5 }}>
-                        <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Ali Reza Akbari</Text>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Ali Reza Akbari <MaterialIcons name="verified" size={18} color="dodgerblue" /> </Text>
                         <Text style={{ fontSize: 15, color: 'gray' }}>he/him/his</Text>
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: 15, gap: 15, }}>

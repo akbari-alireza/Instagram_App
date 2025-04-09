@@ -23,7 +23,8 @@ const PostHeader = ({ post }) => (
     alignItems: 'center',
   }}>
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Image source={{ uri: post.profie_img }} style={styles.storyImage} />
+      <Image source={require('../../assets/circle11.png')} style={styles.border} />
+      <Image source={typeof post.profie_img ==='string' ? { uri: post.profie_img }: post.profie_img} style={styles.storyImage} />
       <View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }} >
           <Text style={{ marginLeft: 3, fontWeight: "700" }}>{post.user}</Text>
@@ -36,9 +37,9 @@ const PostHeader = ({ post }) => (
   </View>
 )
 const PostImage = ({ post }) => (
-  <View style={{ width: '100%', height: 450 }}>
+  <View style={{ width: '100%', height: 450, marginTop: 4 }}>
     <Image
-      source={{ uri: post.image }}
+      source={typeof post.image ==='string' ? { uri: post.image }: post.image}
       style={{
         width: '100%',
         height: 450,
@@ -54,8 +55,6 @@ const PostFooter = ({ post, onCommentPress }) => (
   </View>
 );
 
-
-
 const Footerbuttons = ({ post, onCommentPress }) => {
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
@@ -66,7 +65,10 @@ const Footerbuttons = ({ post, onCommentPress }) => {
     setIsLiked(!isLiked);
     setLike(isLiked ? like - 1 : like + 1);
   }
-
+ const [save, setSave] = useState(false);
+  const handleSavePress = () => {
+    setSave(!save);
+  }
   return (
 
     <View style={{
@@ -81,7 +83,7 @@ const Footerbuttons = ({ post, onCommentPress }) => {
             <AntDesign name={!isLiked ? `hearto` : `heart`} size={24} color={!isLiked ? `black` : `red`} />
             <View>
               {!!post.likes && (
-                <Text>{" "}{post.likes + like}</Text>
+                <Text style={{fontWeight: '600'}}>{" "}{post.likes + like}</Text>
               )}
             </View>
           </Text>
@@ -90,7 +92,7 @@ const Footerbuttons = ({ post, onCommentPress }) => {
         <TouchableOpacity onPress={onCommentPress}>
           <Text>
             <Image style={{ width: 20, height: 20 }} source={require('../../assets/instagram-comment-icon.png')} />
-            <View>
+            <View style={{fontWeight: '600'}}>
               {!!post.comments.length && (
                 <Text>{" "}{post.comments.length}</Text>
               )}
@@ -103,7 +105,7 @@ const Footerbuttons = ({ post, onCommentPress }) => {
         <TouchableOpacity>
           <Text>
             <FontAwesome5 name="telegram-plane" size={24} color="black" />
-            <View>
+            <View style={{fontWeight: '600'}}>
               {!!post.share && (
                 <Text>{" "}{post.share}</Text>
               )}
@@ -112,9 +114,9 @@ const Footerbuttons = ({ post, onCommentPress }) => {
         </TouchableOpacity>
       </View>
       {/* save */}
-      <View>
-        <FontAwesome name="bookmark-o" size={24} color="black" />
-      </View>
+      <TouchableOpacity onPress={handleSavePress}>
+        <FontAwesome name={!save ? `bookmark-o` : `bookmark`} size={24} color="black" />
+      </TouchableOpacity>
     </View>
   )
 }
@@ -137,19 +139,21 @@ const FooterDetails = ({ post }) => (
 
   </>
 )
-
-
-
-
 export default Posts
 const styles = StyleSheet.create({
+  
+  border: {
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    top: -8,
+    left: -1,
+  },
   storyImage: {
     width: 35,
     height: 35,
     borderRadius: 50,
     marginLeft: 6,
     marginRight: 6,
-    borderWidth: 2,
-    borderColor: 'tomato',
   }
 })

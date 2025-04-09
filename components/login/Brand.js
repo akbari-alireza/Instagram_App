@@ -7,7 +7,7 @@ const Brand = () => {
     <View >
          <Image
         style={styles.logo}
-        source={require("../../assets/instagram.png")}/>
+        source={require("../../assets/instagram-log.jpg")}/>
 
     </View>
   );
@@ -15,10 +15,9 @@ const Brand = () => {
 export default Brand;
 const styles = StyleSheet.create({
   logo: {
-      width: 70,
-      height: 70,
+      width: 75,
+      height: 75,
       alignSelf: "center",
-      borderRadius: 10,
   },
 
 })
