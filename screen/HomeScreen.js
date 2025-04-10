@@ -129,8 +129,6 @@ const ViewComments = ({ post, onClose }) => {
                   <Text style={styles.likeCount}>{comment.likes + likes[index]}</Text>
                 </View>
               </TouchableOpacity>
-              {/* <AntDesign name="hearto" size={18} color="gray" /> */}
-              {/* <Text style={styles.likeCount}>{comment.likes}</Text> */}
             </View>
           </View>
         ))}
