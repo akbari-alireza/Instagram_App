@@ -1,13 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { View, TouchableOpacity, Text, StyleSheet,Image } from 'react-native'
 import { MaterialIcons, Ionicons, FontAwesome5,MaterialCommunityIcons  } from '@expo/vector-icons'
 
-const RightIcons = ({ item, handleLike, isLiked }) => {
+const RightIcons = ({ item, handleLike, isLiked, like }) => {
     return (
         <View style={styles.rightIcons}>
             <TouchableOpacity onPress={handleLike} style={styles.iconBlock}>
                 <MaterialIcons name={isLiked ? "favorite" : "favorite-border"} size={32} color={!isLiked ? '#fff' : 'red'} />
-                <Text style={styles.iconText}>{item.likes}</Text>
+                <Text style={styles.iconText}>{item.likes + like}</Text>
+             
+                
             </TouchableOpacity>
             <View style={styles.iconBlock}>
                 <Image

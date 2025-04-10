@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Login" component={ReelsScreen} />
       <Stack.Screen name="Application" component={TabNavigator} />
     </Stack.Navigator>
   );
